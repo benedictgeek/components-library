@@ -1,0 +1,2 @@
+1. Boostrap library with tsdx for proper typescript setup
+   npx tsdx create `library-name`
