@@ -1,6 +1,7 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-  "include": ["src", "types"],
+  "include": ["src", "types", "stories"],
+  // "include": ["src", "types", "stories/Thing.stories.tsx", "stories/Button.stories.tsx"],
   "compilerOptions": {
     "module": "esnext",
     "lib": ["dom", "esnext"],
