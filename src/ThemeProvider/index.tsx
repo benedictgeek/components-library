@@ -3,6 +3,7 @@ import {
   createTheme,
   ThemeProvider as MuiThemeProvider,
 } from '@mui/material/styles';
+
 import { Theme } from '@mui/system';
 
 interface ThemeProps {
@@ -51,6 +52,20 @@ export const ThemeProvider: FC<ThemeProps> = ({
       },
       tertiary: {
         main: '#fff',
+      },
+    },
+    components: {
+      MuiButtonBase: {
+        defaultProps: {
+          //disable touch ripple everwhere
+          disableRipple: true,
+          disableTouchRipple: true,
+        },
+      },
+      MuiButton: {
+        defaultProps: {
+          disableElevation: true,
+        },
       },
     },
   });

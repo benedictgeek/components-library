@@ -13,10 +13,23 @@ export default meta;
 
 export const Primary = () => (
   <ThemeProvider>
-    <Box>
-      <Button variant="contained">My default</Button>
-      <Button variant="outlined">My default</Button>
-      <Button variant="text">My default</Button>
+    <Box
+      sx={{
+        display: 'flex',
+        bgcolor: 'background.paper',
+      }}
+    >
+      <Button sx={{ m: 1 }} variant="contained">
+        My default
+      </Button>
+
+      <Button sx={{ m: 1 }} variant="outlined">
+        My default
+      </Button>
+
+      <Button sx={{ m: 1 }} variant="text">
+        My default
+      </Button>
     </Box>
   </ThemeProvider>
 );
