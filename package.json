@@ -58,6 +58,7 @@
     "@storybook/react": "^6.5.9",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@types/webfontloader": "^1.6.34",
     "babel-loader": "^8.2.5",
     "husky": "^8.0.1",
     "react": "^18.2.0",
@@ -71,6 +72,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@mui/material": "^5.9.1"
+    "@mui/material": "^5.9.1",
+    "webfontloader": "^1.6.28"
   }
 }
