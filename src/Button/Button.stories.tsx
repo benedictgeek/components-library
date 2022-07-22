@@ -1,6 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
+import Box from '@mui/material/Box';
 import { Button } from '.';
+import { ThemeProvider } from '../ThemeProvider';
 
 const meta: Meta = {
   title: 'Button',
@@ -9,5 +11,17 @@ const meta: Meta = {
 
 export default meta;
 
-export const Default = () => <Button>My default</Button>;
-export const Secondary = () => <Button color='secondary'>Secondary btn</Button>;
+export const Primary = () => (
+  <ThemeProvider>
+    <Box>
+      <Button variant="contained">My default</Button>
+      <Button variant="outlined">My default</Button>
+      <Button variant="text">My default</Button>
+    </Box>
+  </ThemeProvider>
+);
+export const Secondary = () => (
+  <ThemeProvider>
+    <Button color="secondary">Secondary btn</Button>
+  </ThemeProvider>
+);
