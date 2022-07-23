@@ -7,34 +7,28 @@ import { ThemeProvider } from '../ThemeProvider';
 const meta: Meta = {
   title: 'Button',
   component: Button,
+  argTypes: {
+    onClick: { action: 'Default btn clicked' },
+    children: {
+      defaultValue: 'My button',
+    },
+  },
 };
 
 export default meta;
 
-export const Primary = () => (
+const Template: Story = (args) => (
   <ThemeProvider>
     <Box
       sx={{
         display: 'flex',
-        bgcolor: 'background.paper',
       }}
     >
-      <Button sx={{ m: 1 }} variant="contained">
-        My default
-      </Button>
-
-      <Button sx={{ m: 1 }} variant="outlined">
-        My default
-      </Button>
-
-      <Button sx={{ m: 1 }} variant="text">
-        My default
-      </Button>
+      <Button sx={{ m: 1 }} variant="contained" {...args} />
+      <Button sx={{ m: 1 }} variant="outlined" {...args} />
+      <Button sx={{ m: 1 }} variant="text" {...args} />
     </Box>
   </ThemeProvider>
 );
-export const Secondary = () => (
-  <ThemeProvider>
-    <Button color="secondary">Secondary btn</Button>
-  </ThemeProvider>
-);
+
+export const Default = Template.bind({});
