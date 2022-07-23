@@ -2,8 +2,7 @@ import { Button as MuiButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const Button = styled(MuiButton)(
-  ({ theme, variant, color = 'primary', sx, style }) => {
-    console.log(sx, style);
+  ({ theme, variant, color = 'primary' }) => {
     return {
       borderRadius: '8px',
       textTransform: 'none',
