@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Radio } from '.';
 import { ThemeProvider } from '../../ThemeProvider';
@@ -11,23 +11,39 @@ const meta: Meta = {
 
 export default meta;
 
-export const Default = () => (
-  <ThemeProvider>
-    <Box>
-      <Radio />
-      <Radio checked />
-      <Radio disabled />
-    </Box>
+const Template: Story = (args) => {
+  const [selectedValue, setSelectedValue] = useState('one');
+  const [values] = useState([
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+    { value: 'three', label: 'Three' },
+  ]);
 
-    <Box>
-      <Radio label="Labelled checkbox" />
-    </Box>
+  return (
+    <ThemeProvider>
+      Radio states
+      <Box>
+        <Radio {...args} />
+        <Radio checked {...args} />
+        <Radio disabled {...args} />
+      </Box>
+      <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
+        Sample usage
+        {values.map((item, index) => {
+          return (
+            <Radio
+              key={index}
+              label={item.label}
+              value={item.value}
+              checked={selectedValue == item.value}
+              onClick={() => setSelectedValue(item.value)}
+              {...args}
+            />
+          );
+        })}
+      </Box>
+    </ThemeProvider>
+  );
+};
 
-    <Box>
-      <Radio
-        label="Labelled checkbox with label props applied"
-        labelProps={{ labelPlacement: 'start' }}
-      />
-    </Box>
-  </ThemeProvider>
-);
+export const Default = Template.bind({});

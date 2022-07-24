@@ -4,6 +4,8 @@ import {
   ThemeProvider as MuiThemeProvider,
 } from '@mui/material/styles';
 
+import GlobalStyles from '@mui/material/GlobalStyles';
+
 import { Theme } from '@mui/system';
 import WebFont from 'webfontloader';
 
@@ -96,6 +98,9 @@ export const ThemeProvider: FC<ThemeProps> = ({
   });
 
   return (
-    <MuiThemeProvider theme={theme || systemTheme}>{children}</MuiThemeProvider>
+    <MuiThemeProvider theme={theme || systemTheme}>
+      <GlobalStyles styles={{ html: { fontFamily: font.name } }} />
+      {children}
+    </MuiThemeProvider>
   );
 };

@@ -11,23 +11,26 @@ const meta: Meta = {
 
 export default meta;
 
-export const Default = () => (
+const Template: Story = (args) => (
   <ThemeProvider>
     <Box>
-      <Checkbox />
-      <Checkbox checked />
-      <Checkbox disabled />
+      <Checkbox {...args} />
+      <Checkbox checked {...args} />
+      <Checkbox disabled {...args} />
     </Box>
 
     <Box>
-      <Checkbox label="Labelled checkbox" />
+      <Checkbox label="Labelled checkbox" {...args} />
     </Box>
 
     <Box>
       <Checkbox
         label="Labelled checkbox with label props applied"
         labelProps={{ labelPlacement: 'start' }}
+        {...args}
       />
     </Box>
   </ThemeProvider>
 );
+
+export const Default = Template.bind({});

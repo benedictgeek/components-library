@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import { styled, alpha } from '@mui/material/styles';
 import MuiRadio, { RadioProps } from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { CustomControlLabel } from '../Checkbox';
+import { CustomControlLabel, CustomControlProps } from '../Checkbox';
 
 const BpIcon = styled('span')(({ theme }) => ({
   borderRadius: '50%',
@@ -33,30 +33,42 @@ const BpIcon = styled('span')(({ theme }) => ({
   },
 }));
 
-const BpCheckedIcon = styled(BpIcon)({
-  backgroundColor: '#137cbd',
-  backgroundImage:
-    'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
-  '&:before': {
-    display: 'block',
-    width: 16,
-    height: 16,
-    backgroundImage: 'radial-gradient(#fff,#fff 28%,transparent 32%)',
-    content: '""',
-  },
-  'input:hover ~ &': {
-    backgroundColor: '#106ba3',
-  },
-});
+const BpCheckedIcon = styled(BpIcon)<CustomControlProps>(
+  ({ theme, backgroundColor }) => ({
+    backgroundColor: backgroundColor || theme.palette.primary.main,
+    //   backgroundColor: '#137cbd',
+    backgroundImage:
+      'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
+    '&:before': {
+      display: 'block',
+      width: 16,
+      height: 16,
+      backgroundImage: 'radial-gradient(#fff,#fff 28%,transparent 32%)',
+      content: '""',
+    },
+    'input:hover ~ &': {
+      // backgroundColor: '#106ba3',
+      backgroundColor: alpha(
+        backgroundColor || theme.palette.primary.main,
+        0.8
+      ),
+    },
+  })
+);
 
 export interface CustomRadioProps extends RadioProps {
   label?: React.ReactNode;
   labelProps?: CustomControlLabel;
+  /**
+   * Override the control background color
+   */
+  backgroundColor?: string;
 }
 
 export const Radio: React.FC<CustomRadioProps> = ({
   label,
   labelProps,
+  backgroundColor,
   ...props
 }) => {
   return (
@@ -77,7 +89,7 @@ export const Radio: React.FC<CustomRadioProps> = ({
             },
           }}
           color="primary"
-          checkedIcon={<BpCheckedIcon />}
+          checkedIcon={<BpCheckedIcon backgroundColor={backgroundColor} />}
           icon={<BpIcon />}
           {...props}
         />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import { styled, darken } from '@mui/material/styles';
 import MuiCheckBox, { CheckboxProps } from '@mui/material/Checkbox';
 import { FormControlLabel, FormControlLabelProps } from '@mui/material';
 
@@ -33,8 +33,15 @@ const BpIcon = styled('span')(({ theme }) => ({
   },
 }));
 
-const BpCheckedIcon = styled(BpIcon)({
-  backgroundColor: '#137cbd',
+export interface CustomControlProps {
+  backgroundColor?: string;
+}
+
+const BpCheckedIcon = styled(BpIcon, {
+  shouldForwardProp: (prop) => prop !== 'backgroundColor',
+})<CustomControlProps>(({ theme, backgroundColor }) => ({
+  backgroundColor: backgroundColor || theme.palette.primary.main,
+  //   backgroundColor: '#137cbd',
   backgroundImage:
     'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
   '&:before': {
@@ -47,10 +54,11 @@ const BpCheckedIcon = styled(BpIcon)({
       "1.003 0 00-1.42 1.42l3 3c.18.18.43.29.71.29s.53-.11.71-.29l5-5A1.003 1.003 0 0012 5z' fill='%23fff'/%3E%3C/svg%3E\")",
     content: '""',
   },
-  //   'input:hover ~ &': {
-  //     backgroundColor: '#106ba3',
-  //   },
-});
+  'input:hover ~ &': {
+    backgroundColor: darken(backgroundColor || theme.palette.primary.main, 0.2),
+    // backgroundColor: '#106ba3',
+  },
+}));
 
 export interface CustomControlLabel
   extends Omit<FormControlLabelProps, 'control' | 'label'> {}
@@ -58,11 +66,17 @@ export interface CustomControlLabel
 export interface CustomCheckboxProps extends CheckboxProps {
   label?: React.ReactNode;
   labelProps?: CustomControlLabel;
+  /**
+   * Override the control background color
+   */
+  backgroundColor?: string;
 }
 
 export const Checkbox: React.FC<CustomCheckboxProps> = ({
   label,
   labelProps,
+
+  backgroundColor,
   ...props
 }) => {
   const CheckComponent = () => (
@@ -74,7 +88,7 @@ export const Checkbox: React.FC<CustomCheckboxProps> = ({
         }`,
       }}
       color="default"
-      checkedIcon={<BpCheckedIcon />}
+      checkedIcon={<BpCheckedIcon backgroundColor={backgroundColor} />}
       icon={<BpIcon />}
       {...props}
     />
