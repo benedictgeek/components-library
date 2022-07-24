@@ -11,7 +11,7 @@ const meta: Meta<InputFieldProps> = {
 
 export default meta;
 
-const Template: Story = (args) => {
+const Template: Story<InputFieldProps> = (args) => {
   return (
     <ThemeProvider>
       <Box
