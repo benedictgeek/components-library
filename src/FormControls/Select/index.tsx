@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import MuiSelect from '@mui/material/Select';
-import { SelectProps, InputLabelProps, SelectChangeEvent } from '@mui/material';
+import { SelectProps, InputLabelProps } from '@mui/material';
 import { Input } from '../InputField';
 
 interface Value {
@@ -24,7 +22,7 @@ export const Select: React.FC<CustomSelectProps> = ({
   label,
   sx,
   values,
-  selected,
+  selected = '',
   onChange,
   ...props
 }) => {
