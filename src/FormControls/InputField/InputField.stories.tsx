@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Input, InputFieldProps } from '.';
 import { ThemeProvider } from '../../ThemeProvider';
-import { Box } from '@mui/material';
+import { Box, InputAdornment, SelectChangeEvent } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import EyeIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 
 const meta: Meta<InputFieldProps> = {
   title: 'InputField',
@@ -49,4 +51,38 @@ const Template: Story<InputFieldProps> = (args) => {
   );
 };
 
+const AdornTemplate: Story<InputFieldProps> = (args) => {
+  return (
+    <ThemeProvider>
+      <Box
+        sx={{
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: { sm: '1fr 1fr' },
+          gap: 3,
+        }}
+      >
+        <Input
+          label="Search input"
+          required
+          placeholder="Placeholder text"
+          fullWidth
+          startIcon={<SearchIcon />}
+          {...args}
+        />
+
+        <Input
+          label="End icon"
+          required
+          placeholder="Placeholder text"
+          fullWidth
+          endIcon={<EyeIcon />}
+          {...args}
+        />
+      </Box>
+    </ThemeProvider>
+  );
+};
+
 export const Default = Template.bind({});
+export const Adonrments = AdornTemplate.bind({});

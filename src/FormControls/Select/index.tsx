@@ -36,7 +36,7 @@ export const Select: React.FC<CustomSelectProps> = ({
       <MuiSelect
         value={selected}
         sx={{ borderRadius: '16px', ...sx }}
-        input={<Input />}
+        // input={<Input />}
         onChange={onChange}
         {...props}
       >
