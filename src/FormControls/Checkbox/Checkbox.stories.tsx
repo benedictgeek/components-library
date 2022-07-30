@@ -5,7 +5,7 @@ import { ThemeProvider } from '../../ThemeProvider';
 import { Box } from '@mui/material';
 
 const meta: Meta = {
-  title: 'Checkbox',
+  title: 'Inputs/Checkbox',
   component: Checkbox,
 };
 

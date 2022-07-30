@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import EyeIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 
 const meta: Meta<InputFieldProps> = {
-  title: 'InputField',
+  title: 'Inputs/InputField',
   component: Input,
 };
 

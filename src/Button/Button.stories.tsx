@@ -5,7 +5,7 @@ import { Button } from '.';
 import { ThemeProvider } from '../ThemeProvider';
 
 const meta: Meta = {
-  title: 'Button',
+  title: 'Inputs/Button',
   component: Button,
   argTypes: {
     onClick: { action: 'Default btn clicked' },

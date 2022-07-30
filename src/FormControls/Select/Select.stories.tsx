@@ -5,7 +5,7 @@ import { ThemeProvider } from '../../ThemeProvider';
 import { SelectChangeEvent } from '@mui/material';
 
 const meta: Meta = {
-  title: 'Select',
+  title: 'Inputs/Select',
   component: Select,
 };
 
