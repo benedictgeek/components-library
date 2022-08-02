@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Input, InputFieldProps } from '.';
-import { ThemeProvider } from '../../ThemeProvider';
+import { ThemeProvider } from '../../../ThemeProvider';
 import { Box, InputAdornment, SelectChangeEvent } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import EyeIcon from '@mui/icons-material/RemoveRedEyeOutlined';

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Switch } from '.';
-import { ThemeProvider } from '../../ThemeProvider';
+import { ThemeProvider } from '../../../ThemeProvider';
 import { Box } from '@mui/material';
 
 const meta: Meta = {
-  title: 'Inputs/Switch',
+  title: 'Inputs/Switcher',
   component: Switch,
 };
 

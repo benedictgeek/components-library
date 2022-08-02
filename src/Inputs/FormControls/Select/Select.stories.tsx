@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Select } from '.';
-import { ThemeProvider } from '../../ThemeProvider';
+import { ThemeProvider } from '../../../ThemeProvider';
 import { SelectChangeEvent } from '@mui/material';
 
 const meta: Meta = {

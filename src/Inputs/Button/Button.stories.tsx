@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Box from '@mui/material/Box';
 import { Button } from '.';
-import { ThemeProvider } from '../ThemeProvider';
+import { ThemeProvider } from '../../ThemeProvider';
 
 const meta: Meta = {
   title: 'Inputs/Button',
