@@ -3,7 +3,6 @@ import {
   TextField as MuiInput,
   // InputBase as MuiInput,
   TextFieldProps,
-  InputBaseProps,
   InputLabel,
   InputLabelProps,
   InputAdornment,

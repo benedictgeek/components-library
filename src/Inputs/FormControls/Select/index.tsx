@@ -3,7 +3,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import MuiSelect from '@mui/material/Select';
 import { SelectProps, InputLabelProps } from '@mui/material';
-import { Input } from '../InputField';
 
 interface Value {
   label: React.ReactNode;

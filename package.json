@@ -35,9 +35,12 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "components-library",
+  "name": "components-library-mui",
   "author": "Olushola",
   "module": "dist/components-library.esm.js",
+  "repository": {
+    "url": "https://github.com/benedictgeek/components-library"
+  },
   "size-limit": [
     {
       "path": "dist/components-library.cjs.production.min.js",

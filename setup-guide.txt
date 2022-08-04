@@ -1,3 +1,7 @@
 1. Boostrap library with tsdx for proper typescript setup
    npx tsdx create `library-name`
    --select storybook from options
+
+2. Allow stories to be compiled from anywhere within src instead of only stories folder
+   - open .storybook folder at root
+   - replace content of 'stories' with '../src/**/*.stories.@(ts|tsx|js|jsx)'

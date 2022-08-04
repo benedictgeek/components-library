@@ -51,6 +51,8 @@ export const ThemeProvider: FC<ThemeProps> = ({
   theme,
   primaryColor,
   secondaryColor,
+  tertiaryColor,
+  neutralColor,
   font = {
     name: "'Montserrat', sans-serif",
     title: 'Montserrat',
@@ -75,11 +77,17 @@ export const ThemeProvider: FC<ThemeProps> = ({
         main: secondaryColor || '#0000ff',
       },
       tertiary: {
-        main: '#fff',
+        main: tertiaryColor || '#fff',
+      },
+      neutral: {
+        main: neutralColor || '#fff',
       },
     },
     typography: {
       fontFamily: font.name,
+      // body1: {
+      //   fontSize: '1.4rem',
+      // },
     },
     components: {
       MuiButtonBase: {
@@ -99,7 +107,14 @@ export const ThemeProvider: FC<ThemeProps> = ({
 
   return (
     <MuiThemeProvider theme={theme || systemTheme}>
-      <GlobalStyles styles={{ html: { fontFamily: font.name } }} />
+      <GlobalStyles
+        styles={{
+          html: {
+            fontFamily: font.name,
+            // fontSize: '62.5%'
+          },
+        }}
+      />
       {children}
     </MuiThemeProvider>
   );
