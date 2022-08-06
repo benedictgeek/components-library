@@ -4,6 +4,9 @@ import { Radio, CustomRadioProps } from './Inputs/FormControls/Radio';
 import { Select, CustomSelectProps } from './Inputs/FormControls/Select';
 import { Switch, CustomSwitchProps } from './Inputs/FormControls/Switch';
 import { Input, InputFieldProps } from './Inputs/FormControls/InputField';
+import { Table, CellProps, DataProps, TableProps } from './Display/Table';
+import { Tooltip } from './Display/Tooltip';
+import { Badge } from './Display/Badge';
 import {
   Header1,
   Header2,
@@ -44,4 +47,18 @@ export {
   Body1,
   Body2,
   Caption,
+  //table
+  Table,
+  CellProps,
+  DataProps,
+  TableProps,
+  //table
+
+  //tooltip
+  Tooltip,
+  //tooltip
+
+  //badge
+  Badge,
+  //badge
 };
