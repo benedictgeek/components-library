@@ -7,6 +7,7 @@ import { Input, InputFieldProps } from './Inputs/FormControls/InputField';
 import { Table, CellProps, DataProps, TableProps } from './Display/Table';
 import { Tooltip } from './Display/Tooltip';
 import { Badge } from './Display/Badge';
+import { Avartar, AvartarGroup } from './Display/Avartar';
 import {
   Header1,
   Header2,
@@ -61,4 +62,9 @@ export {
   //badge
   Badge,
   //badge
+
+  //Avartar
+  Avartar,
+  AvartarGroup,
+  //Avartar
 };
