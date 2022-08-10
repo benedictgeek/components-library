@@ -8,6 +8,7 @@ import { Table, CellProps, DataProps, TableProps } from './Display/Table';
 import { Tooltip } from './Display/Tooltip';
 import { Badge } from './Display/Badge';
 import { Avartar, AvartarGroup } from './Display/Avartar';
+import { Tab, Tabs, TabsProps } from './Navigation/Tabs';
 import {
   Header1,
   Header2,
@@ -67,4 +68,10 @@ export {
   Avartar,
   AvartarGroup,
   //Avartar
+
+  //Tabs
+  Tab,
+  Tabs,
+  TabsProps,
+  //Tabs
 };
