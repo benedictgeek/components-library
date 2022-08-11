@@ -16,35 +16,35 @@ import MuiStepConnector, {
 import { StepIconProps } from '@mui/material/StepIcon';
 
 const StepConnector = styled(MuiStepConnector)<{
-  stepCircleSize?: number;
-  activeLineColor?: string;
-  completedLineColor?: string;
-  defaultLineColor?: string;
+  stepcirclesize?: number;
+  activelinecolor?: string;
+  completedlinecolor?: string;
+  defaultlinecolor?: string;
 }>(
   ({
     theme,
-    stepCircleSize,
-    activeLineColor,
-    completedLineColor,
-    defaultLineColor,
+    stepcirclesize,
+    activelinecolor,
+    completedlinecolor,
+    defaultlinecolor,
   }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
       top: 10,
-      left: `calc(-50% + ${stepCircleSize ? stepCircleSize / 2 : 10}px)`,
-      right: `calc(50% + ${stepCircleSize ? stepCircleSize / 2 : 10}px)`,
+      left: `calc(-50% + ${stepcirclesize ? stepcirclesize / 2 : 10}px)`,
+      right: `calc(50% + ${stepcirclesize ? stepcirclesize / 2 : 10}px)`,
     },
     [`&.${stepConnectorClasses.active}`]: {
       [`& .${stepConnectorClasses.line}`]: {
-        borderColor: activeLineColor || theme.palette.primary.main,
+        borderColor: activelinecolor || theme.palette.primary.main,
       },
     },
     [`&.${stepConnectorClasses.completed}`]: {
       [`& .${stepConnectorClasses.line}`]: {
-        borderColor: completedLineColor || theme.palette.primary.main,
+        borderColor: completedlinecolor || theme.palette.primary.main,
       },
     },
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: defaultLineColor || '#eaeaf0',
+      borderColor: defaultlinecolor || '#eaeaf0',
       borderTopWidth: 3,
       borderRadius: 1,
     },
@@ -53,8 +53,8 @@ const StepConnector = styled(MuiStepConnector)<{
 
 const StepIconRoot = styled('div')<{
   ownerState: { active?: boolean };
-  stepCircleSize?: number;
-}>(({ theme, ownerState, stepCircleSize }) => ({
+  stepcirclesize?: number;
+}>(({ theme, ownerState, stepcirclesize }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
   display: 'flex',
   height: 22,
@@ -69,8 +69,8 @@ const StepIconRoot = styled('div')<{
   },
   '& .StepIcon-circle': {
     fontSize: 13,
-    width: stepCircleSize,
-    height: stepCircleSize,
+    width: stepcirclesize,
+    height: stepcirclesize,
     borderRadius: '50%',
     background: 'red',
     color: 'white',
@@ -86,20 +86,21 @@ const StepIconRoot = styled('div')<{
 }));
 
 const StepIcon: React.FC<
-  StepIconProps & { index: number; stepCircleSize?: number }
+  StepIconProps & { index: number; stepcirclesize?: number }
 > = ({
   active,
   completed,
   className,
   index,
-  stepCircleSize,
+  stepcirclesize,
   ref,
+  error,
   ...props
 }) => {
   return (
     <StepIconRoot
       ownerState={{ active }}
-      stepCircleSize={stepCircleSize}
+      stepcirclesize={stepcirclesize}
       className={className}
     >
       {completed ? (
@@ -141,14 +142,25 @@ export interface StepDataProps {
 export interface StepperProps extends MuiStepperProps {
   steps: StepDataProps[];
   handleStep?: (index: number) => any;
-  stepCircleSize?: number;
-  activeLineColor?: string;
-  completedLineColor?: string;
-  defaultLineColor?: string;
+  stepcirclesize?: number;
+  activelinecolor?: string;
+  completedlinecolor?: string;
+  defaultlinecolor?: string;
 }
 
 export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
-  ({ steps, stepCircleSize, handleStep, ...props }, ref) => {
+  (
+    {
+      steps,
+      stepcirclesize,
+      handleStep,
+      activelinecolor,
+      completedlinecolor,
+      defaultlinecolor,
+      ...props
+    },
+    ref
+  ) => {
     const [stepUID] = React.useState(() => uuidv4());
     return (
       <MuiStepper
@@ -157,10 +169,10 @@ export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
         // orientation="vertical"
         connector={
           <StepConnector
-            activeLineColor={props.activeLineColor}
-            completedLineColor={props.completedLineColor}
-            defaultLineColor={props.defaultLineColor}
-            stepCircleSize={stepCircleSize}
+            activelinecolor={activelinecolor}
+            completedlinecolor={completedlinecolor}
+            defaultlinecolor={defaultlinecolor}
+            stepcirclesize={stepcirclesize}
           />
         }
         {...props}
@@ -188,7 +200,7 @@ export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
                     <StepIcon
                       icon={null}
                       index={index + 1}
-                      stepCircleSize={stepCircleSize}
+                      stepcirclesize={stepcirclesize}
                       {...props}
                       {...StepIconProps}
                     />
@@ -210,5 +222,5 @@ export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
 );
 
 Stepper.defaultProps = {
-  stepCircleSize: 30,
+  stepcirclesize: 30,
 };

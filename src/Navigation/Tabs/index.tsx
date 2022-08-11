@@ -36,18 +36,18 @@ export const Tabs = styled((props: TabsProps) => (
 interface TabProps {
   label: string;
   color?: string;
-  selectedColor?: string;
+  selectedcolor?: string;
 }
 
 export const Tab = styled((props: TabProps) => <MuiTab {...props} />)(
-  ({ theme, color, selectedColor }) => ({
+  ({ theme, color, selectedcolor }) => ({
     textTransform: 'none',
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: theme.typography.pxToRem(15),
     marginRight: theme.spacing(1),
     color: color,
     '&.Mui-selected': {
-      color: selectedColor,
+      color: selectedcolor,
     },
     '&.Mui-focusVisible': {
       backgroundColor: 'rgba(100, 95, 228, 0.32)',
@@ -57,5 +57,5 @@ export const Tab = styled((props: TabProps) => <MuiTab {...props} />)(
 
 Tab.defaultProps = {
   color: 'rgba(0, 0, 0, 0.7)',
-  selectedColor: 'rgb(0, 0, 0)',
+  selectedcolor: 'rgb(0, 0, 0)',
 };
