@@ -10,6 +10,7 @@ import { Badge } from './Display/Badge';
 import { Avartar, AvartarGroup } from './Display/Avartar';
 import { Tab, Tabs, TabsProps } from './Navigation/Tabs';
 import { StepperProps, StepDataProps, Stepper } from './Navigation/Stepper';
+import { MenuItemProps, MenuProps, Menu } from './Navigation/Menu';
 import {
   Header1,
   Header2,
@@ -81,4 +82,9 @@ export {
   StepDataProps,
   Stepper,
   //Stepper
+
+  //Menu
+
+  MenuItemProps, MenuProps, Menu
+  //Menu
 };

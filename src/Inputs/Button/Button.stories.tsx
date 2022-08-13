@@ -24,7 +24,7 @@ const Template: Story = (args) => (
         display: 'flex',
       }}
     >
-      <Button sx={{ m: 1 }} variant="contained" {...args} />
+      <Button sx={{ m: 1 }}  {...args} />
       <Button sx={{ m: 1 }} variant="outlined" {...args} />
       <Button sx={{ m: 1 }} variant="text" {...args} />
     </Box>
