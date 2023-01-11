@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Select } from '.';
+import { Select, SearchableSelect } from '.';
 import { ThemeProvider } from '../../../ThemeProvider';
 import { SelectChangeEvent } from '@mui/material';
 
@@ -35,4 +35,29 @@ const Template: Story = (args) => {
   );
 };
 
+const SearchableTemplate: Story = (args) => {
+  const [selectedValue, setSelectedValue] = useState('one');
+
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
+    return setSelectedValue(event.target.value as string);
+  };
+  const [values] = useState([
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+    { value: 'three', label: 'Three' },
+  ]);
+
+  return (
+    <ThemeProvider>
+      <SearchableSelect
+        selected={selectedValue}
+        values={values}
+        onChange={handleChange}
+        {...args}
+      />
+    </ThemeProvider>
+  );
+};
+
 export const Default = Template.bind({});
+export const Search = SearchableTemplate.bind({});

@@ -56,13 +56,9 @@ export interface InputFieldProps {
   endIcon?: ReactNode;
 }
 
-export const Input = ({
-  label,
-  labelProps,
-  startIcon,
-  endIcon,
-  ...props
-}: TextFieldProps & InputFieldProps) => {
+export const Input = React.forwardRef<HTMLInputElement, TextFieldProps & InputFieldProps>((props, ref) => {
+  const { label, labelProps, startIcon, endIcon, ...otherProps } = props;
+  
   return (
     <div>
       {label && (
@@ -72,7 +68,8 @@ export const Input = ({
       )}
       <StyledInput
         variant="outlined"
-        {...props}
+        {...otherProps}
+        ref={ref}
         InputProps={{
           ...props.InputProps,
           startAdornment: startIcon ? (
@@ -85,4 +82,4 @@ export const Input = ({
       />
     </div>
   );
-};
+});
