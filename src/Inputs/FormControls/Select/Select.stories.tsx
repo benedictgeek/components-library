@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import { Select, SearchableSelect } from '.';
 import { ThemeProvider } from '../../../ThemeProvider';
 import { SelectChangeEvent } from '@mui/material';
+import { Box } from '@mui/material';
 
 const meta: Meta = {
   title: 'Inputs/Select',
@@ -45,16 +46,36 @@ const SearchableTemplate: Story = (args) => {
     { value: 'one', label: 'One' },
     { value: 'two', label: 'Two' },
     { value: 'three', label: 'Three' },
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+    { value: 'three', label: 'Three' },
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+    { value: 'three', label: 'Three' },
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+    { value: 'three', label: 'Three' },
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+    { value: 'three', label: 'Three' },
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+    { value: 'three', label: 'Three' },
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+    { value: 'three', label: 'Three' },
   ]);
 
   return (
     <ThemeProvider>
-      <SearchableSelect
-        selected={selectedValue}
-        values={values}
-        onChange={handleChange}
-        {...args}
-      />
+      <Box style={{ marginTop: '0px' }}>
+        <SearchableSelect
+          selected={selectedValue}
+          values={values}
+          onChange={handleChange}
+          {...args}
+        />
+      </Box>
     </ThemeProvider>
   );
 };

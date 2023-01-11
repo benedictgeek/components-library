@@ -64,12 +64,25 @@ export const SearchableSelect: React.FC<CustomSelectProps> = ({
   onChange,
   ...props
 }) => {
-  const [inputBox, setInputBox] = React.useState<DOMRect | undefined>();
+  const [inputBox, setInputBox] = React.useState<DOMRect>();
+  const [itemsContainerBox, setitemsContainerBox] = React.useState<DOMRect>();
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const itemsContainerRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
     const inputRect = inputRef?.current?.getBoundingClientRect();
+    const itemsContainerRect =
+      itemsContainerRef?.current?.getBoundingClientRect();
+    console.log(inputRect, itemsContainerRect);
     setInputBox(inputRect);
+    setitemsContainerBox(itemsContainerRect);
   }, [inputRef]);
+
+  // const activeHeight = itemsContainerBox?.height + inputBox?.bottom + 5;
+  const activeHeight = inputBox?.bottom + 20;
+  const offsetTop =
+    activeHeight > window.innerHeight
+      ? inputBox?.top - itemsContainerBox?.height - inputBox?.height + 50
+      : inputBox?.bottom + 5;
 
   return (
     <>
@@ -90,12 +103,20 @@ export const SearchableSelect: React.FC<CustomSelectProps> = ({
           ref={inputRef}
         />
         <div
-          // ref={inputRef}
+          ref={itemsContainerRef}
           style={{
+            padding: '5px',
+            boxSizing: 'border-box',
             width: `${inputBox?.width}px`,
             position: 'absolute',
+            top: offsetTop,
+            overflow: 'scroll',
           }}
         >
+          <Input
+            style={{ width: '100%' }}
+            InputProps={{ style: { height: '30px' } }}
+          />
           {values.map(({ label, value }, index) => {
             return (
               <MenuItem key={index} value={value}>
