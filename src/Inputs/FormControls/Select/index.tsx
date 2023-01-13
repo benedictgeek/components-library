@@ -58,11 +58,11 @@ export const Select: React.FC<CustomSelectProps> = ({
 export const SearchableSelect: React.FC<CustomSelectProps> = ({
   labelProps,
   label,
-  sx,
+  // sx,
   values,
-  selected = '',
-  onChange,
-  ...props
+  // selected = '',
+  // onChange,
+  // ...props
 }) => {
   const [inputBox, setInputBox] = React.useState<DOMRect>();
   const [itemsContainerBox, setitemsContainerBox] = React.useState<DOMRect>();
@@ -78,11 +78,30 @@ export const SearchableSelect: React.FC<CustomSelectProps> = ({
   }, [inputRef]);
 
   // const activeHeight = itemsContainerBox?.height + inputBox?.bottom + 5;
-  const activeHeight = inputBox?.bottom + 20;
-  const offsetTop =
-    activeHeight > window.innerHeight
-      ? inputBox?.top - itemsContainerBox?.height - inputBox?.height + 50
-      : inputBox?.bottom + 5;
+  const activeHeight = (inputBox?.bottom || 0) + 20;
+  let offsetTop = 0;
+  let offsetBottom = 0;
+  let totalItemsAvailableHeight = 0;
+
+  if (activeHeight > window.innerHeight) {
+    // offsetBottom = inputBox?.top || 0;
+    // offsetTop =
+    //   (inputBox?.top || 0) -
+    //   (itemsContainerBox?.height || 0) -
+    //   (inputBox?.height || 0) +
+    //   50;
+
+    // totalItemsAvailableHeight = window.innerHeight - offsetTop;
+
+    console.log(window.innerHeight, offsetBottom);
+    // totalItemsAvailableHeight = offsetBottom;
+    totalItemsAvailableHeight = inputBox?.top || 0;
+
+    offsetBottom = window.innerHeight - totalItemsAvailableHeight;
+  } else {
+    offsetTop = (inputBox?.bottom || 0) + 5;
+    totalItemsAvailableHeight = window.innerHeight - offsetTop;
+  }
 
   return (
     <>
@@ -109,8 +128,11 @@ export const SearchableSelect: React.FC<CustomSelectProps> = ({
             boxSizing: 'border-box',
             width: `${inputBox?.width}px`,
             position: 'absolute',
+            bottom: offsetBottom,
             top: offsetTop,
             overflow: 'scroll',
+            maxHeight: `${totalItemsAvailableHeight}px`,
+            zIndex: 9999,
           }}
         >
           <Input
