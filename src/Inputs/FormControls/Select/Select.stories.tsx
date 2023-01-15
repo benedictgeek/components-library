@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Select, SearchableSelect } from '.';
+import { Select } from '.';
+import { SearchableSelect } from './searchable';
 import { ThemeProvider } from '../../../ThemeProvider';
 import { SelectChangeEvent } from '@mui/material';
 import { Box } from '@mui/material';
@@ -68,7 +69,7 @@ const SearchableTemplate: Story = (args) => {
 
   return (
     <ThemeProvider>
-      <Box style={{ marginTop: '600px' }}>
+      <Box style={{ marginTop: '0px' }}>
         <SearchableSelect
           selected={selectedValue}
           values={values}
